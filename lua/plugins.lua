@@ -278,90 +278,101 @@ dependencies = {
     dependencies = "nvim-lua/plenary.nvim",
     config = true,
     keys = { -- load the plugin only when using it's keybinding:
-      { "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
-    },
+    { "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
   },
-  {
-    'lewis6991/gitsigns.nvim', opts = {}
+},
+{
+  'lewis6991/gitsigns.nvim', opts = {}
+},
+{
+  "folke/which-key.nvim",
+  event = "VeryLazy",
+  init = function()
+    vim.o.timeout = true
+    vim.o.timeoutlen = 300
+  end,
+  opts = {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration on github
+  }
+},
+{
+  "ibhagwan/fzf-lua",
+  -- optional for icon support
+  dependencies = { "nvim-tree/nvim-web-devicons" },
+  config = function()
+    -- calling `setup` is optional (customization)
+    vim.keymap.set({ "n", "v" }, "<leader>fi", ":FzfLua files<CR>", { desc = "[F]ind f[I]les" })
+    vim.keymap.set({ "n", "v" }, "<leader>fc", ":FzfLua colorschemes<CR>", { desc = "[F]ind [CO]lourschemes" })
+    require("fzf-lua").setup({})
+  end,
+},
+{
+  "nvim-tree/nvim-tree.lua",
+  version = "*",
+  lazy = false,
+  dependencies = { "nvim-tree/nvim-web-devicons" },
+  config = function()
+    require("nvim-tree").setup {}
+  end,
+},
+{
+  'stevearc/oil.nvim',
+  opts = {},
+  -- Optional dependencies
+  dependencies = { "nvim-tree/nvim-web-devicons" },
+  config = function()
+    require("oil").setup({
+      default_file_explorer = true,
+    })
+    vim.keymap.set( "n", "-", "<CMD>Oil<CR>", { desc = "Open oil parent directory" })
+  end,
+},
+{
+  "chrishrb/gx.nvim",
+  keys = { { "gx", "<cmd>Browse<cr>", mode = { "n", "x" } } },
+  cmd = { "Browse" },
+  init = function ()
+    vim.g.netrw_nogx = 1 -- disable netrw gx
+  end,
+  dependencies = { "nvim-lua/plenary.nvim" },
+  config = true, -- default settings
+  submodules = false, -- not needed, submodules are required only for tests
+},
+{
+  "Eandrju/cellular-automaton.nvim"
+},
+{
+  "christoomey/vim-tmux-navigator",
+  cmd = {
+    "TmuxNavigateLeft",
+    "TmuxNavigateDown",
+    "TmuxNavigateUp",
+    "TmuxNavigateRight",
+    "TmuxNavigatePrevious",
   },
-  {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
-    init = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 300
-    end,
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration on github
-    }
+  keys = {
+    { "<c-h>",  "<cmd><C-U>TmuxNavigateLeft<cr>" },
+    { "<c-j>",  "<cmd><C-U>TmuxNavigateDown<cr>" },
+    { "<c-k>",  "<cmd><C-U>TmuxNavigateUp<cr>" },
+    { "<c-l>",  "<cmd><C-U>TmuxNavigateRight<cr>" },
+    { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
   },
-  {
-    "ibhagwan/fzf-lua",
-    -- optional for icon support
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      -- calling `setup` is optional (customization)
-      vim.keymap.set({ "n", "v" }, "<leader>fi", ":FzfLua files<CR>", { desc = "[F]ind f[I]les" })
-      vim.keymap.set({ "n", "v" }, "<leader>fc", ":FzfLua colorschemes<CR>", { desc = "[F]ind [CO]lourschemes" })
-      require("fzf-lua").setup({})
-    end,
-  },
-  {
-    "nvim-tree/nvim-tree.lua",
-    version = "*",
-    lazy = false,
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("nvim-tree").setup {}
-    end,
-  },
-  {
-    'stevearc/oil.nvim',
-    opts = {},
-    -- Optional dependencies
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("oil").setup({
-        default_file_explorer = true,
-      })
-      vim.keymap.set( "n", "-", "<CMD>Oil<CR>", { desc = "Open oil parent directory" })
-    end,
-  },
-  {
-    "Eandrju/cellular-automaton.nvim"
-  },
-  {
-    "christoomey/vim-tmux-navigator",
-    cmd = {
-      "TmuxNavigateLeft",
-      "TmuxNavigateDown",
-      "TmuxNavigateUp",
-      "TmuxNavigateRight",
-      "TmuxNavigatePrevious",
-    },
-    keys = {
-      { "<c-h>",  "<cmd><C-U>TmuxNavigateLeft<cr>" },
-      { "<c-j>",  "<cmd><C-U>TmuxNavigateDown<cr>" },
-      { "<c-k>",  "<cmd><C-U>TmuxNavigateUp<cr>" },
-      { "<c-l>",  "<cmd><C-U>TmuxNavigateRight<cr>" },
-      { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
-    },
-  },
-  {
-    'nvim-telescope/telescope.nvim',
-    branch = '0.1.x',
-    dependencies = { 'nvim-lua/plenary.nvim' }
-  },
-  {
-    "ThePrimeagen/harpoon",
-    branch = "harpoon2",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      local harpoon = require("harpoon")
-      -- local harpoonConfigFileFfs = require("plugins/harpoon")
-      harpoon:setup({})
+},
+{
+  'nvim-telescope/telescope.nvim',
+  branch = '0.1.x',
+  dependencies = { 'nvim-lua/plenary.nvim' }
+},
+{
+  "ThePrimeagen/harpoon",
+  branch = "harpoon2",
+  dependencies = { "nvim-lua/plenary.nvim" },
+  config = function()
+    local harpoon = require("harpoon")
+    -- local harpoonConfigFileFfs = require("plugins/harpoon")
+    harpoon:setup({})
 
       -- ##### was in harpoon file
       -- REQUIRED
