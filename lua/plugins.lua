@@ -432,6 +432,17 @@ dependencies = {
     dependencies = { 'nvim-lua/plenary.nvim' },
     opts = { signs = false }
   },
+  {
+    'Wansmer/treesj',
+    -- keys = { '<leader>rt', '<leader>rj', '<leader>rs' },
+    dependencies = { 'nvim-treesitter/nvim-treesitter' }, -- if you install parsers with `nvim-treesitter`
+    config = function()
+      require('treesj').setup({--[[ your config ]]})
+    vim.keymap.set( "n", "<leader>jt", ":TSJToggle<CR>", { desc = "[J]oin [T]oggle" })
+    vim.keymap.set( "n", "<leader>jj", ":TSJJoin<CR>", { desc = "[J]oin [J]oin" })
+    vim.keymap.set( "n", "<leader>js", ":TSJSplit<CR>", { desc = "[J]oin [S]plit" })
+    end,
+  },
   -- MINI
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
@@ -448,7 +459,7 @@ dependencies = {
       --       find_left = '<leader>sF',      -- Find surrounding (to the left)
       --       highlight = '<leader>sh',      -- Highlight surrounding
       --       replace = '<leader>sr',        -- Replace surrounding
-      --       update_n_lines = '<leader>sn', -- Update `n_lines`
+      --       update_n_lines = '<leader>sn', -- Update `n_lines` - conflicts with <leader>s %s word replace
       --
       --       suffix_last = 'l',             -- Suffix to search with "prev" method
       --       suffix_next = 'n',             -- Suffix to search with "next" method
