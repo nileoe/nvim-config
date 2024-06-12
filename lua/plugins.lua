@@ -1,3 +1,5 @@
+-- TODO check those
+-- f-person/git-blame.nvim (see git blames)
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -280,6 +282,9 @@ dependencies = {
     keys = { -- load the plugin only when using it's keybinding:
     { "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
   },
+},
+{
+  "tpope/vim-fugitive"
 },
 {
   'lewis6991/gitsigns.nvim', opts = {}
