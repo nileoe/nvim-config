@@ -1,5 +1,7 @@
 -- TODO check those
 -- f-person/git-blame.nvim (see git blames)
+-- delete comment plugin when nvim version is 10+ (probably)
+
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -309,7 +311,7 @@ dependencies = {
   config = function()
     -- calling `setup` is optional (customization)
     vim.keymap.set({ "n", "v" }, "<leader>fi", ":FzfLua files<CR>", { desc = "[F]ind f[I]les" })
-    vim.keymap.set({ "n", "v" }, "<leader>fc", ":FzfLua colorschemes<CR>", { desc = "[F]ind [CO]lourschemes" })
+    vim.keymap.set({ "n", "v" }, "<leader>fc", ":FzfLua colorschemes<CR>", { desc = "[F]ind [C]olorschemes" })
     require("fzf-lua").setup({})
   end,
 },

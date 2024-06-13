@@ -47,7 +47,8 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- so that in visual block mode <C-c> = escape ffs
 vim.keymap.set("i", "<C-c>", "<Esc>")
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>") -- TODO here
+
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 -- to investigate some time
 -- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz") -- for going through errors
