@@ -386,8 +386,8 @@ dependencies = {
       -- harpoon:setup() -- called in plugins.lua
       -- REQUIRED
 
-      vim.keymap.set("n", "<leader>h", function() harpoon:list():add() end, { desc = "Add buffer to [H]arpoon list" })
-      vim.keymap.set("n", "<A-h>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
+      vim.keymap.set({"n", "v"}, "<leader>h", function() harpoon:list():add() end, { desc = "Add buffer to [H]arpoon list" })
+      vim.keymap.set({"n", "v"}, "<A-h>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
         { desc = "Open [H]arpoon window" })
 
       vim.keymap.set("n", "<A-u>", function() harpoon:list():select(1) end)
@@ -566,6 +566,7 @@ dependencies = {
   "projekt0n/github-nvim-theme",
   "ellisonleao/gruvbox.nvim",
   "shaunsingh/nord.nvim",
+  "AlexvZyl/nordic.nvim",
 })
 
 local set_theme = function()
