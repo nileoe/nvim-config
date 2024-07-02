@@ -33,9 +33,11 @@ vim.keymap.set("n", "J", "myJ`y", { silent = true }) -- don't move cursor when c
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
--- tmux-style splits
-vim.keymap.set({ "n", "v", "x" }, "<leader>%", ":vsp<CR>")
-vim.keymap.set({ "n", "v", "x" }, '<leader>"', ":sp<CR>")
+-- zellij-style splits
+vim.keymap.set({ "n", "v", "x" }, "<leader>pl", ":vsp<CR>")
+vim.keymap.set({ "n", "v", "x" }, "<leader>ph", ":vsp<CR>")
+vim.keymap.set({ "n", "v", "x" }, '<leader>pj', ":sp<CR>")
+vim.keymap.set({ "n", "v", "x" }, '<leader>pk', ":sp<CR>")
 
 -- <C-d> and <C-u> center the screen verically
 vim.keymap.set("n", "<C-d>", "<C-d>zz")

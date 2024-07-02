@@ -350,22 +350,35 @@ dependencies = {
 {
   "Eandrju/cellular-automaton.nvim"
 },
+-- {
+--   "christoomey/vim-tmux-navigator",
+--   cmd = {
+--     "TmuxNavigateLeft",
+--     "TmuxNavigateDown",
+--     "TmuxNavigateUp",
+--     "TmuxNavigateRight",
+--     "TmuxNavigatePrevious",
+--   },
+--   keys = {
+--     { "<c-h>",  "<cmd><C-U>TmuxNavigateLeft<cr>" },
+--     { "<c-j>",  "<cmd><C-U>TmuxNavigateDown<cr>" },
+--     { "<c-k>",  "<cmd><C-U>TmuxNavigateUp<cr>" },
+--     { "<c-l>",  "<cmd><C-U>TmuxNavigateRight<cr>" },
+--     { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+--   },
+-- },
+
 {
-  "christoomey/vim-tmux-navigator",
-  cmd = {
-    "TmuxNavigateLeft",
-    "TmuxNavigateDown",
-    "TmuxNavigateUp",
-    "TmuxNavigateRight",
-    "TmuxNavigatePrevious",
-  },
+  "https://git.sr.ht/~swaits/zellij-nav.nvim",
+  lazy = true,
+  event = "VeryLazy",
   keys = {
-    { "<c-h>",  "<cmd><C-U>TmuxNavigateLeft<cr>" },
-    { "<c-j>",  "<cmd><C-U>TmuxNavigateDown<cr>" },
-    { "<c-k>",  "<cmd><C-U>TmuxNavigateUp<cr>" },
-    { "<c-l>",  "<cmd><C-U>TmuxNavigateRight<cr>" },
-    { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+    { "<A-h>", "<cmd>ZellijNavigateLeft<cr>",  { silent = true, desc = "navigate left"  } },
+    { "<A-j>", "<cmd>ZellijNavigateDown<cr>",  { silent = true, desc = "navigate down"  } },
+    { "<A-k>", "<cmd>ZellijNavigateUp<cr>",    { silent = true, desc = "navigate up"    } },
+    { "<A-l>", "<cmd>ZellijNavigateRight<cr>", { silent = true, desc = "navigate right" } },
   },
+  opts = {},
 },
 {
   'nvim-telescope/telescope.nvim',
@@ -387,18 +400,13 @@ dependencies = {
       -- REQUIRED
 
       vim.keymap.set({"n", "v"}, "<leader>h", function() harpoon:list():add() end, { desc = "Add buffer to [H]arpoon list" })
-      vim.keymap.set({"n", "v"}, "<A-h>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
+      vim.keymap.set({"n", "v"}, "<A-S-h>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
         { desc = "Open [H]arpoon window" })
 
       vim.keymap.set("n", "<A-u>", function() harpoon:list():select(1) end)
       vim.keymap.set("n", "<A-i>", function() harpoon:list():select(2) end)
       vim.keymap.set("n", "<A-o>", function() harpoon:list():select(3) end)
       vim.keymap.set("n", "<A-p>", function() harpoon:list():select(4) end)
-
-      -- vim.keymap.set("n", "<A-u>", "oAlt + h baby<C-c>")
-      -- vim.keymap.set("n", "<A-i>", "oAlt + j baby<C-c>")
-      -- vim.keymap.set("n", "<A-o>", "oAlt + k baby<C-c>")
-      -- vim.keymap.set("n", "<A-p>", "oAlt + l baby<C-c>")
 
       -- Toggle previous & next buffers stored within Harpoon list
       vim.keymap.set("n", "<A-S-p>", function() harpoon:list():prev() end)

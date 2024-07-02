@@ -39,3 +39,7 @@ vim.opt.termguicolors = true -- 24-bit colours -- defaults to true since 0.10 ve
 vim.opt.inccommand = "split"
 -- cursor line is slightly highlighted
 vim.opt.cursorline = true
+
+-- neovide
+vim.g.neovide_position_animation_length = 0
+vim.g.neovide_touch_drag_timeout = 0
