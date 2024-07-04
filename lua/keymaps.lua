@@ -7,7 +7,7 @@ vim.keymap.set("n", "<leader>rf", vim.diagnostic.setloclist, { desc = "Open diag
 -- I like hls sue me
 vim.keymap.set({"n", "v"}, "<leader>n", ":noh<CR>")
 
--- Explore
+-- Explore (show project tree)
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "[E]xplore : Toggle NvimTree" })
 
 -- Line separators
@@ -28,6 +28,9 @@ vim.keymap.set("n", "<leader>th", function()
 end, { desc = "Open terminal window in new left pane" })
 
 -- #################################### Navigation ####################################
+-- resize
+-- vim.keymap.set("n", "<leader>rh", "<cmd> resize 10<CR>")
+
 vim.keymap.set("n", "J", "myJ`y", { silent = true }) -- don't move cursor when calling J
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
