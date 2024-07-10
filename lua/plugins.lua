@@ -563,6 +563,7 @@ dependencies = {
       })
     end,
   },
+  'navarasu/onedark.nvim',
   'sainnhe/edge',
   "catppuccin/nvim",
   "rebelot/kanagawa.nvim",
