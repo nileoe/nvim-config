@@ -579,7 +579,6 @@ dependencies = {
 
 local set_theme = function()
   -- vim.cmd.colorscheme("tokyonight-night")
-  vim.cmd.colorscheme("tokyonight-night")
 end
 set_theme()
 -- vim: ts=2 sts=2 sw=2 et
