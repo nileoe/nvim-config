@@ -11,9 +11,6 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- ####################################### LSPS / MASON
   {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-  },
-  {
     "neovim/nvim-lspconfig",
     --        dependencies = { "mason-lspconfig.nvim" },
   },
@@ -40,6 +37,9 @@ require('lazy').setup({
     end,
   },
   -- TREESITTER
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+  },
   { -- ALL OF THIS IS TREESITTER DO NOT PANIC
     -- treesitter allows for multiple modules (i.e. plugins) in treesitter.configs.
     "nvim-treesitter/nvim-treesitter",
@@ -575,6 +575,7 @@ dependencies = {
   "ellisonleao/gruvbox.nvim",
   "shaunsingh/nord.nvim",
   "AlexvZyl/nordic.nvim",
+  "oxfist/night-owl.nvim",
 })
 
 local set_theme = function()

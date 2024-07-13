@@ -11,8 +11,8 @@ vim.keymap.set({"n", "v"}, "<leader>n", ":noh<CR>")
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "[E]xplore : Toggle NvimTree" })
 
 -- Line separators
-vim.keymap.set("n", "<leader>sep", "o------------------------------------  <C-c>hhyiw$pbhi",
-    { desc = "line [SEP]arator" })
+-- vim.keymap.set("n", "<leader>sep", "o------------------------------------  <C-c>hhyiw$pbhi",
+--     { desc = "line [SEP]arator" })
 
 
 -- Terminal
