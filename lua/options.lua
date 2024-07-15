@@ -4,6 +4,8 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.showmode = false
 
+vim.opt.showtabline = 2
+
 vim.opt.expandtab = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
