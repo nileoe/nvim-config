@@ -5,7 +5,7 @@ vim.keymap.set("n", "<leader>r", vim.diagnostic.open_float, { desc = "Show diagn
 vim.keymap.set("n", "<leader>rf", vim.diagnostic.setloclist, { desc = "Open diagnostic e[R]rors quick[F]ix list" })
 
 -- I like hls sue me
-vim.keymap.set({"n", "v"}, "<leader>n", ":noh<CR>")
+vim.keymap.set({"n", "v"}, "<leader>n", ":noh<CR>", { silent = true })
 
 -- Explore (show project tree)
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "[E]xplore : Toggle NvimTree" })
