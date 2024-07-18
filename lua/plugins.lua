@@ -310,9 +310,9 @@ dependencies = {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
     -- calling `setup` is optional (customization)
-    vim.keymap.set({ "n", "v" }, "<leader>fi", ":FzfLua files<CR>", { desc = "[F]ind f[I]les" })
-    vim.keymap.set({ "n", "v" }, "<leader>fc", ":FzfLua colorschemes<CR>", { desc = "[F]ind [C]olorschemes" })
-    vim.keymap.set({ "n", "v" }, "<leader>fg", ":FzfLua live_grep<CR>", { desc = "[F]ind [C]olorschemes" })
+    vim.keymap.set({ "n", "v" }, "<leader>g", ":FzfLua files<CR>", { desc = "[G]o to file" })
+    vim.keymap.set({ "n", "v" }, "<leader>fc", ":FzfLua colorschemes<CR>", { desc = "[F]zf [C]olorschemes" })
+    vim.keymap.set({ "n", "v" }, "<leader>fg", ":FzfLua live_grep<CR>", { desc = "[F]zf [G]rep" })
     require("fzf-lua").setup({})
   end,
 },
