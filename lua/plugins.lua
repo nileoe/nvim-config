@@ -496,7 +496,7 @@ dependencies = {
       -- end
       -- require("mini.statusline").setup()
       require("mini.pairs").setup()
-      require("mini.jump2d").setup()
+      -- require("mini.jump2d").setup()
       -- require("mini.files").setup()
       -- require("mini.jump").setup()
     end,
