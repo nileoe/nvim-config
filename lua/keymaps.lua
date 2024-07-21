@@ -41,8 +41,8 @@ vim.keymap.set({ "n", "v", "x" }, '<leader>pj', ":sp<CR>")
 vim.keymap.set({ "n", "v", "x" }, '<leader>pk', ":sp<CR>")
 
 -- <C-d> and <C-u> center the screen verically
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
+-- vim.keymap.set("n", "<C-d>", "<C-d>zz")
+-- vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- search terms stay in the middle verically
 -- vim.keymap.set("n", "n", "nzzzv")

@@ -492,101 +492,110 @@ dependencies = {
       -- -- cursor location to LINE:COLUMN
       -- ---@diagnostic disable-next-line: duplicate-set-field
       -- statusline.section_location = function()
-      --   return '%2l:%-2v'
-      -- end
-      -- require("mini.statusline").setup()
-      require("mini.pairs").setup()
-      -- require("mini.jump2d").setup()
-      -- require("mini.files").setup()
-      -- require("mini.jump").setup()
-    end,
+          --   return '%2l:%-2v'
+          -- end
+          -- require("mini.statusline").setup()
+          require("mini.pairs").setup()
+          -- require("mini.jump2d").setup()
+          -- require("mini.files").setup()
+          -- require("mini.jump").setup()
+      end,
   },
   {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function()
-      require("lualine").setup({
-          -- options = {
-          --     icons_enabled = true,
-          --     component_separators = ">>>>>"
-          -- }
-      })
-    end,
-  },
-  -- {
-  --   'smoka7/hop.nvim',
-  --   version = "*",
-  --   opts = {
-  --     keys = 'etovxqpdygfblzhckisuran'
-  --   }
-  -- },
-  {
-    "norcalli/nvim-colorizer.lua",
-    config = function()
-      require('colorizer').setup()
-    end,
-  },
-  {
-    "folke/flash.nvim",
-    event = "VeryLazy",
-    ---@type Flash.Config
-    opts = {},
-    -- stylua: ignore
-    keys = {
-      { "<leader>/", mode = { "n", "x", "o" }, function() require("flash").jump() end,       desc = "Flash" },
-      { "<leader>v", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-      -- { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-      -- { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      -- { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
-    },
-  },
-  -- #################################### COLORSCHEMES ####################################
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {},
-    config = function()
-      require("tokyonight").setup({
-        -- use the night style
-        style = "night",
-        -- disable italic for functions
-        styles = {
-          functions = {}
-        },
-        sidebars = { "qf", "vista_kind", "terminal", "packer" },
-        -- Change the "hint" color to the "orange" color, and make the "error" color bright red
-        on_colors = function(colors)
-          -- colors.hint = colors.orange
-          -- colors.error = "#00ff00"
-          colors.fg_gutter = "#7aa2f7" -- "#3b4261"
-          colors.comment = "#767fa9"   -- "#565f89"
-          colors.terminal_black = colors.orange
-          -- colors.terminal_black = "#ff9e64" -- #414868
-        end,
-        on_highlights = function(highlights)
-          highlights.MiniStatuslineFilename = {
-            bg = "#3b4261", -- defaults: so that the gutter doesn't affect this
-            fg = "#ffffff"  -- "#a9b1d6"
-          }
-          -- make unused imports and similar (unnessary) readable (default is too dark)
-          -- highlights.DiagnosticUnnecessary = {
-          --   fg = "#ffff00",
-          -- }
-        end,
-      })
-    end,
-  },
-  'navarasu/onedark.nvim',
-  'sainnhe/edge',
-  "catppuccin/nvim",
-  "rebelot/kanagawa.nvim",
-  "rose-pine/neovim",
-  "EdenEast/nightfox.nvim",
-  "savq/melange-nvim",
-  "projekt0n/github-nvim-theme",
-  "ellisonleao/gruvbox.nvim",
-  "shaunsingh/nord.nvim",
-  "AlexvZyl/nordic.nvim",
-  "oxfist/night-owl.nvim",
-})
+      'nvim-lualine/lualine.nvim',
+      dependencies = { 'nvim-tree/nvim-web-devicons' },
+      config = function()
+          require("lualine").setup({
+              -- options = {
+                  --     icons_enabled = true,
+                  --     component_separators = ">>>>>"
+                  -- }
+              })
+          end,
+      },
+      -- {
+          --   'smoka7/hop.nvim',
+          --   version = "*",
+          --   opts = {
+              --     keys = 'etovxqpdygfblzhckisuran'
+              --   }
+              -- },
+              {
+                  "norcalli/nvim-colorizer.lua",
+                  config = function()
+                      require('colorizer').setup()
+                  end,
+              },
+              {
+                  "folke/flash.nvim",
+                  event = "VeryLazy",
+                  ---@type Flash.Config
+                  opts = {},
+                  -- stylua: ignore
+                  keys = {
+                      { "<leader>/", mode = { "n", "x", "o" }, function() require("flash").jump() end,       desc = "Flash" },
+                      { "<leader>v", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+                      -- { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+                      -- { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+                      -- { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+                  },
+              },
+              -- lazy.nvim
+              {
+                  "m4xshen/hardtime.nvim",
+                  dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+                  opts = {
+                      disable_mouse = false,
+                      max_count = 15,
+                  },
+              },
+              -- #################################### COLORSCHEMES ####################################
+              {
+                  "folke/tokyonight.nvim",
+                  lazy = false,
+                  priority = 1000,
+                  opts = {},
+                  config = function()
+                      require("tokyonight").setup({
+                          -- use the night style
+                          style = "night",
+                          -- disable italic for functions
+                          styles = {
+                              functions = {}
+                          },
+                          sidebars = { "qf", "vista_kind", "terminal", "packer" },
+                          -- Change the "hint" color to the "orange" color, and make the "error" color bright red
+                          on_colors = function(colors)
+                              -- colors.hint = colors.orange
+                              -- colors.error = "#00ff00"
+                              colors.fg_gutter = "#7aa2f7" -- "#3b4261"
+                              colors.comment = "#767fa9"   -- "#565f89"
+                              colors.terminal_black = colors.orange
+                              -- colors.terminal_black = "#ff9e64" -- #414868
+                          end,
+                          on_highlights = function(highlights)
+                              highlights.MiniStatuslineFilename = {
+                                  bg = "#3b4261", -- defaults: so that the gutter doesn't affect this
+                                  fg = "#ffffff"  -- "#a9b1d6"
+                              }
+                              -- make unused imports and similar (unnessary) readable (default is too dark)
+                              -- highlights.DiagnosticUnnecessary = {
+                                  --   fg = "#ffff00",
+                                  -- }
+                              end,
+                          })
+                      end,
+                  },
+                  'navarasu/onedark.nvim',
+                  'sainnhe/edge',
+                  "catppuccin/nvim",
+                  "rebelot/kanagawa.nvim",
+                  "rose-pine/neovim",
+                  "EdenEast/nightfox.nvim",
+                  "savq/melange-nvim",
+                  "projekt0n/github-nvim-theme",
+                  "ellisonleao/gruvbox.nvim",
+                  "shaunsingh/nord.nvim",
+                  "AlexvZyl/nordic.nvim",
+                  "oxfist/night-owl.nvim",
+              })

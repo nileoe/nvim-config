@@ -2,13 +2,11 @@ vim.g.mapleader = " "
 
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.showmode = false
+-- vim.opt.showmode = false -- no idea what it does?
 
-vim.opt.showtabline = 2
-
-vim.opt.expandtab = true
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+-- vim.opt.expandtab = true
+-- vim.opt.tabstop = 6 -- TODO check that this isn't needed
+vim.opt.shiftwidth = 6
 
 vim.opt.virtualedit = "block"
 vim.opt.wrap = false
