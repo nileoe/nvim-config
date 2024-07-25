@@ -545,14 +545,14 @@ dependencies = {
                       -- { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
                   },
               },
-              {
-                  "m4xshen/hardtime.nvim",
-                  dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-                  opts = {
-                      disable_mouse = false,
-                      max_count = 15,
-                  },
-              },
+              -- { -- REQUIRES v >= 0.10
+              --     "m4xshen/hardtime.nvim",
+              --     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+              --     opts = {
+              --         disable_mouse = false,
+              --         max_count = 15,
+              --     },
+              -- },
               -- #################################### COLORSCHEMES ####################################
               {
                   "folke/tokyonight.nvim",
