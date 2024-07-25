@@ -310,7 +310,8 @@ dependencies = {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
     -- calling `setup` is optional (customization)
-    vim.keymap.set({ "n", "v" }, "<leader>g", ":FzfLua files<CR>", { desc = "[G]o to file" })
+    -- vim.keymap.set({ "n", "v" }, "<leader>g", ":FzfLua files<CR>", { desc = "[G]o to file" })
+    vim.keymap.set({ "n", "v" }, "<C-P>", ":FzfLua files<CR>", { desc = "[G]o to file" })
     vim.keymap.set({ "n", "v" }, "<leader>fc", ":FzfLua colorschemes<CR>", { desc = "[F]zf [C]olorschemes" })
     vim.keymap.set({ "n", "v" }, "<leader>fg", ":FzfLua live_grep<CR>", { desc = "[F]zf [G]rep" })
     require("fzf-lua").setup({})
@@ -333,6 +334,10 @@ dependencies = {
   config = function()
     require("oil").setup({
       default_file_explorer = true,
+      keymaps = {
+	  ["<C-p>"] = false,
+	  ["<C-e>"] = "actions.preview",
+      }
     })
     vim.keymap.set( "n", "-", "<CMD>Oil<CR>", { desc = "Open oil parent directory" })
   end,
@@ -540,7 +545,6 @@ dependencies = {
                       -- { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
                   },
               },
-              -- lazy.nvim
               {
                   "m4xshen/hardtime.nvim",
                   dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
