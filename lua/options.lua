@@ -4,13 +4,15 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 -- vim.opt.showmode = false -- no idea what it does?
 
+vim.opt.showtabline = 2 -- used as file title on top
+
 -- vim.opt.expandtab = true
 -- vim.opt.tabstop = 6 -- TODO check that this isn't needed
 vim.opt.shiftwidth = 6
 
 vim.opt.virtualedit = "block"
 vim.opt.wrap = false
-vim.opt.scrolloff = 7 -- Minimal number o flines to keep above and below cursor
+vim.opt.scrolloff = 7 -- Minimal number of lines to keep above and below cursor
 vim.opt.undofile = true
 
 -- insensitive case unless using \C or one or more capital letters in the search term
@@ -37,7 +39,7 @@ vim.opt.termguicolors = true -- 24-bit colours -- defaults to true since 0.10 ve
 -- ??
 -- Preview substitutions live, as you type
 vim.opt.inccommand = "split"
--- cursor line is slightly highlighted
+-- cursor line is highlighted slightly
 vim.opt.cursorline = true
 
 -- neovide
