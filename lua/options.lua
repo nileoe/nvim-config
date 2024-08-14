@@ -12,6 +12,7 @@ vim.opt.shiftwidth = 6
 
 vim.opt.virtualedit = "block"
 vim.opt.wrap = false
+vim.opt.linebreak = false
 vim.opt.scrolloff = 7 -- Minimal number of lines to keep above and below cursor
 vim.opt.undofile = true
 
@@ -20,7 +21,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 vim.opt.signcolumn = "yes" -- remove to not have signcolumn
-vim.opt.updatetime = 1000  -- default is 4000 (ms) -> 4 sec (time for writing to swap file)
+vim.opt.updatetime = 1000 -- default is 4000 (ms) -> 4 sec (time for writing to swap file)
 
 -- Decrease mapped sequence wait time. Displays which-key popup sooner (default = 1000 ms)
 vim.opt.timeoutlen = 300
