@@ -9,7 +9,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
-  -- ####################################### LSPS / MASON
+  -- ####################################### LSPS / MASON #######################################
   {
     "neovim/nvim-lspconfig",
     --        dependencies = { "mason-lspconfig.nvim" },
@@ -39,6 +39,9 @@ require('lazy').setup({
   -- TREESITTER
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
+  },
+  {
+      "mfussenegger/nvim-dap"
   },
   { -- ALL OF THIS IS TREESITTER DO NOT PANIC
     -- treesitter allows for multiple modules (i.e. plugins) in treesitter.configs.
@@ -311,7 +314,7 @@ dependencies = {
   config = function()
     -- calling `setup` is optional (customization)
     -- vim.keymap.set({ "n", "v" }, "<leader>g", ":FzfLua files<CR>", { desc = "[G]o to file" })
-    vim.keymap.set({ "n", "v" }, "<C-P>", ":FzfLua files<CR>", { desc = "[G]o to file" })
+    vim.keymap.set({ "n", "v" }, "<C-p>", ":FzfLua files<CR>", { desc = "[G]o to file" })
     vim.keymap.set({ "n", "v" }, "<leader>fc", ":FzfLua colorschemes<CR>", { desc = "[F]zf [C]olorschemes" })
     vim.keymap.set({ "n", "v" }, "<leader>fg", ":FzfLua live_grep<CR>", { desc = "[F]zf [G]rep" })
     require("fzf-lua").setup({})
@@ -531,20 +534,20 @@ dependencies = {
                       require('colorizer').setup()
                   end,
               },
-              {
-                  "folke/flash.nvim",
-                  event = "VeryLazy",
-                  ---@type Flash.Config
-                  opts = {},
-                  -- stylua: ignore
-                  keys = {
-                      { "<leader>/", mode = { "n", "x", "o" }, function() require("flash").jump() end,       desc = "Flash" },
-                      { "<leader>v", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-                      -- { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-                      -- { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-                      -- { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
-                  },
-              },
+              -- {
+              --     "folke/flash.nvim",
+              --     event = "VeryLazy",
+              --     ---@type Flash.Config
+              --     opts = {},
+              --     -- stylua: ignore
+              --     keys = {
+              --         { "<leader>/", mode = { "n", "x", "o" }, function() require("flash").jump() end,       desc = "Flash" },
+              --         { "<leader>v", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+              --         -- { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+              --         -- { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+              --         -- { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+              --     },
+              -- },
               -- { -- REQUIRES v >= 0.10
               --     "m4xshen/hardtime.nvim",
               --     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
