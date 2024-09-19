@@ -2,4 +2,4 @@ require("options")
 require("plugins")
 require("keymaps")
 
-vim.cmd.colorscheme("catppuccin-mocha")
+vim.cmd.colorscheme("tokyonight")
