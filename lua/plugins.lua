@@ -294,19 +294,19 @@ require("lazy").setup({
 		"lewis6991/gitsigns.nvim",
 		opts = {},
 	},
-	-- {
-	--   "folke/which-key.nvim",
-	--   event = "VeryLazy",
-	--   init = function()
-	--     vim.o.timeout = true
-	--     vim.o.timeoutlen = 300
-	--   end,
-	--   opts = {
-	--     -- your configuration comes here
-	--     -- or leave it empty to use the default settings
-	--     -- refer to the configuration on github
-	--   }
-	-- },
+	{
+	  "folke/which-key.nvim",
+	  event = "VeryLazy",
+	  init = function()
+	    vim.o.timeout = true
+	    vim.o.timeoutlen = 300
+	  end,
+	  opts = {
+	    -- your configuration comes here
+	    -- or leave it empty to use the default settings
+	    -- refer to the configuration on github
+	  }
+	},
 	{
 		"ibhagwan/fzf-lua",
 		-- optional for icon support
@@ -552,20 +552,20 @@ require("lazy").setup({
 			require("colorizer").setup()
 		end,
 	},
-	-- {
-	--     "folke/flash.nvim",
-	--     event = "VeryLazy",
-	--     ---@type Flash.Config
-	--     opts = {},
-	--     -- stylua: ignore
-	--     keys = {
-	--         { "<leader>/", mode = { "n", "x", "o" }, function() require("flash").jump() end,       desc = "Flash" },
-	--         { "<leader>v", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-	--         -- { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-	--         -- { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-	--         -- { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
-	--     },
-	-- },
+	{
+	    "folke/flash.nvim",
+	    event = "VeryLazy",
+	    ---@type Flash.Config
+	    opts = {},
+	    -- stylua: ignore
+	    keys = {
+	        { "<leader>/", mode = { "n", "x", "o" }, function() require("flash").jump() end,       desc = "Flash" },
+	        { "<leader>v", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+	        -- { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+	        -- { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+	        -- { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+	    },
+	},
 	-- { -- REQUIRES v >= 0.10
 	--     "m4xshen/hardtime.nvim",
 	--     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
@@ -625,6 +625,16 @@ require("lazy").setup({
 	"oxfist/night-owl.nvim",
 	"ribru17/bamboo.nvim",
 	"nyoom-engineering/oxocarbon.nvim",
-	"zenbones-theme/zenbones.nvim",
+	{
+	      "zenbones-theme/zenbones.nvim",
+	      dependencies = "rktjmp/lush.nvim",
+	      lazy = false,
+	      priority = 1000,
+	      -- you can set set configuration options here
+	      -- config = function()
+	      --     vim.g.zenbones_darken_comments = 45
+	      --     vim.cmd.colorscheme('zenbones')
+	      -- end
+	      },
 	"yorickpeterse/vim-paper",
 })
