@@ -42,6 +42,16 @@ require("lazy").setup({
 	},
 	{
 		"mfussenegger/nvim-dap",
+		-- thanks TJ
+		config = function()
+			local dap = require("dap")
+			vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint)
+			vim.keymap.set("n", "<leader>dg", dap.run_to_cursor)
+			-- Eval variable under cursor
+			vim.keymap.set("n", "<leader>?", function()
+				require("dapui").eval(nil, { enter = true })
+			end)
+		end,
 	},
 	{ -- ALL OF THIS IS TREESITTER DO NOT PANIC
 		-- treesitter allows for multiple modules (i.e. plugins) in treesitter.configs.
@@ -132,6 +142,7 @@ require("lazy").setup({
 		},
 		opts = {
 			notify_on_error = false,
+			stop_after_first = true,
 			format_on_save = function(bufnr)
 				-- Disable "format_on_save lsp_fallback" for languages that don't
 				-- have a well standardized coding style. You can add additional
@@ -144,25 +155,33 @@ require("lazy").setup({
 			end,
 			formatters_by_ft = {
 				lua = { "stylua" },
-				nix = { "nixpkgs-fmt" },
-				-- Conform can also run multiple formatters sequentially
-				-- python = { "isort", "black" },
-				--
-				-- You can use a sub-list to tell conform to run *until* a formatter
-				-- is found.
-				javascript = { { "prettierd", "prettier" } },
-				typescript = { { "prettierd", "prettier" } },
-				javascriptreact = { { "prettierd", "prettier" } },
-				typescriptreact = { { "prettierd", "prettier" } },
+				nix = { "alejandra", "nixpkgs-fmt" },
+				javascript = { "prettierd", "prettier" },
+				typescript = { "prettierd", "prettier" },
+				javascriptreact = { "prettierd", "prettier" },
+				typescriptreact = { "prettierd", "prettier" },
 				lua = { "stylua" },
-				css = { { "prettierd", "prettier" } },
-				scss = { { "prettierd", "prettier" } },
-				json = { { "prettierd", "prettier" } },
+				css = { "prettierd", "prettier" },
+				scss = { "prettierd", "prettier" },
+				json = { "prettierd", "prettier" },
 				java = { "google-java-format" },
 				html = { "htmlbeautifier" },
 				bash = { "buf" },
 				rust = { "rustfmt" },
 				toml = { "taplo" },
+				-- javascript = { { "prettierd", "prettier" } },
+				-- typescript = { { "prettierd", "prettier" } },
+				-- javascriptreact = { { "prettierd", "prettier" } },
+				-- typescriptreact = { { "prettierd", "prettier" } },
+				-- lua = { "stylua" },
+				-- css = { { "prettierd", "prettier" } },
+				-- scss = { { "prettierd", "prettier" } },
+				-- json = { { "prettierd", "prettier" } },
+				-- java = { "google-java-format" },
+				-- html = { "htmlbeautifier" },
+				-- bash = { "buf" },
+				-- rust = { "rustfmt" },
+				-- toml = { "taplo" },
 			},
 		},
 	},
@@ -287,25 +306,36 @@ require("lazy").setup({
 			{ "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
 		},
 	},
+	-- {
+	-- 	"tpope/vim-fugitive",
+	-- },
 	{
-		"tpope/vim-fugitive",
+		"NeogitOrg/neogit",
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- required
+			"sindrets/diffview.nvim", -- optional - Diff integration
+			"ibhagwan/fzf-lua", -- optional
+			-- "isakbm/gitgraph.nvim",
+		},
+		config = true,
+		opts = { graph_style = kitty },
 	},
 	{
 		"lewis6991/gitsigns.nvim",
 		opts = {},
 	},
 	{
-	  "folke/which-key.nvim",
-	  event = "VeryLazy",
-	  init = function()
-	    vim.o.timeout = true
-	    vim.o.timeoutlen = 300
-	  end,
-	  opts = {
-	    -- your configuration comes here
-	    -- or leave it empty to use the default settings
-	    -- refer to the configuration on github
-	  }
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		init = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
+		end,
+		opts = {
+			-- your configuration comes here
+			-- or leave it empty to use the default settings
+			-- refer to the configuration on github
+		},
 	},
 	{
 		"ibhagwan/fzf-lua",
@@ -553,10 +583,10 @@ require("lazy").setup({
 		end,
 	},
 	{
-	    "folke/flash.nvim",
-	    event = "VeryLazy",
-	    ---@type Flash.Config
-	    opts = {},
+		"folke/flash.nvim",
+		event = "VeryLazy",
+		---@type Flash.Config
+		opts = {},
 	    -- stylua: ignore
 	    keys = {
 	        { "<leader>/", mode = { "n", "x", "o" }, function() require("flash").jump() end,       desc = "Flash" },
@@ -626,15 +656,15 @@ require("lazy").setup({
 	"ribru17/bamboo.nvim",
 	"nyoom-engineering/oxocarbon.nvim",
 	{
-	      "zenbones-theme/zenbones.nvim",
-	      dependencies = "rktjmp/lush.nvim",
-	      lazy = false,
-	      priority = 1000,
-	      -- you can set set configuration options here
-	      -- config = function()
-	      --     vim.g.zenbones_darken_comments = 45
-	      --     vim.cmd.colorscheme('zenbones')
-	      -- end
-	      },
+		"zenbones-theme/zenbones.nvim",
+		dependencies = "rktjmp/lush.nvim",
+		lazy = false,
+		priority = 1000,
+		-- you can set set configuration options here
+		-- config = function()
+		--     vim.g.zenbones_darken_comments = 45
+		--     vim.cmd.colorscheme('zenbones')
+		-- end
+	},
 	"yorickpeterse/vim-paper",
 })
