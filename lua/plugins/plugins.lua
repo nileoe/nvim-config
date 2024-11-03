@@ -9,6 +9,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
+	require("plugins/colorschemes"),
+	require("plugins/git"),
+	-- require("plugins/debugging"),
 	-- ####################################### LSPS / MASON #######################################
 	{
 		"neovim/nvim-lspconfig",
@@ -19,6 +22,11 @@ require("lazy").setup({
 		config = function()
 			require("mason").setup()
 		end,
+		opts = {
+			ensure_installed = {
+				"debugpy",
+			},
+		},
 	},
 	{
 		-- mason lsp server names don't always match with nvim-lspconfig.
@@ -39,19 +47,6 @@ require("lazy").setup({
 	-- TREESITTER
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
-	},
-	{
-		"mfussenegger/nvim-dap",
-		-- thanks TJ
-		config = function()
-			local dap = require("dap")
-			vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint)
-			vim.keymap.set("n", "<leader>dg", dap.run_to_cursor)
-			-- Eval variable under cursor
-			vim.keymap.set("n", "<leader>?", function()
-				require("dapui").eval(nil, { enter = true })
-			end)
-		end,
 	},
 	{ -- ALL OF THIS IS TREESITTER DO NOT PANIC
 		-- treesitter allows for multiple modules (i.e. plugins) in treesitter.configs.
@@ -310,17 +305,6 @@ require("lazy").setup({
 	-- 	"tpope/vim-fugitive",
 	-- },
 	{
-		"NeogitOrg/neogit",
-		dependencies = {
-			"nvim-lua/plenary.nvim", -- required
-			"sindrets/diffview.nvim", -- optional - Diff integration
-			"ibhagwan/fzf-lua", -- optional
-			-- "isakbm/gitgraph.nvim",
-		},
-		config = true,
-		opts = { graph_style = kitty },
-	},
-	{
 		"lewis6991/gitsigns.nvim",
 		opts = {},
 	},
@@ -433,8 +417,6 @@ require("lazy").setup({
 			-- local harpoonConfigFileFfs = require("plugins/harpoon")
 			harpoon:setup({})
 
-			-- ##### was in harpoon file
-			-- REQUIRED
 			-- harpoon:setup() -- called in plugins.lua
 			-- REQUIRED
 
@@ -641,30 +623,4 @@ require("lazy").setup({
 			})
 		end,
 	},
-	"navarasu/onedark.nvim",
-	"sainnhe/edge",
-	"catppuccin/nvim",
-	"rebelot/kanagawa.nvim",
-	"rose-pine/neovim",
-	"EdenEast/nightfox.nvim",
-	"savq/melange-nvim",
-	"projekt0n/github-nvim-theme",
-	"ellisonleao/gruvbox.nvim",
-	"shaunsingh/nord.nvim",
-	"AlexvZyl/nordic.nvim",
-	"oxfist/night-owl.nvim",
-	"ribru17/bamboo.nvim",
-	"nyoom-engineering/oxocarbon.nvim",
-	{
-		"zenbones-theme/zenbones.nvim",
-		dependencies = "rktjmp/lush.nvim",
-		lazy = false,
-		priority = 1000,
-		-- you can set set configuration options here
-		-- config = function()
-		--     vim.g.zenbones_darken_comments = 45
-		--     vim.cmd.colorscheme('zenbones')
-		-- end
-	},
-	"yorickpeterse/vim-paper",
 })

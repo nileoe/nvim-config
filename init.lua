@@ -1,5 +1,5 @@
 require("options")
-require("plugins")
+require("plugins/plugins")
 require("keymaps")
 
 vim.cmd.colorscheme("tokyobones")

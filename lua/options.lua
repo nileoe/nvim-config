@@ -3,6 +3,7 @@ vim.g.mapleader = " "
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.showmode = false
+vim.opt.swapfile = false
 
 vim.opt.showtabline = 2 -- used as file title on top
 
