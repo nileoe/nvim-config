@@ -588,43 +588,7 @@ require("lazy").setup({
 	--         max_count = 15,
 	--     },
 	-- },
-	-- #################################### COLORSCHEMES ####################################
-	{
-		"folke/tokyonight.nvim",
-		lazy = false,
-		priority = 1000,
-		opts = {},
-		config = function()
-			require("tokyonight").setup({
-				-- use the night style
-				style = "night",
-				-- disable italic for functions
-				styles = {
-					functions = {},
-				},
-				sidebars = { "qf", "vista_kind", "terminal", "packer" },
-				-- Change the "hint" color to the "orange" color, and make the "error" color bright red
-				on_colors = function(colors)
-					-- colors.hint = colors.orange
-					-- colors.error = "#00ff00"
-					colors.fg_gutter = "#7aa2f7" -- "#3b4261"
-					colors.comment = "#767fa9" -- "#565f89"
-					colors.terminal_black = colors.orange
-					-- colors.terminal_black = "#ff9e64" -- #414868
-				end,
-				on_highlights = function(highlights)
-					highlights.MiniStatuslineFilename = {
-						bg = "#3b4261", -- defaults: so that the gutter doesn't affect this
-						fg = "#ffffff", -- "#a9b1d6"
-					}
-					-- make unused imports and similar (unnessary) readable (default is too dark)
-					-- highlights.DiagnosticUnnecessary = {
-					--   fg = "#ffff00",
-					-- }
-				end,
-			})
-		end,
-	},
+	-- look into https://github.com/Shatur/neovim-tasks
 })
 local lspconfig = require("lspconfig")
 lspconfig.clangd.setup({
