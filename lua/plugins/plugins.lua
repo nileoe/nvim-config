@@ -1,6 +1,5 @@
 -- TODO check those
 -- f-person/git-blame.nvim (see git blames)
--- delete comment plugin when nvim version is 10+ (probably)
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -15,7 +14,13 @@ require("lazy").setup({
 	-- ####################################### LSPS / MASON #######################################
 	{
 		"neovim/nvim-lspconfig",
-		--        dependencies = { "mason-lspconfig.nvim" },
+		-- opts = {
+		-- 	servers = {
+		-- 		clangd = {
+		-- 			mason = false,
+		-- 		},
+		-- 	},
+		-- },
 	},
 	{
 		"williamboman/mason.nvim",
@@ -25,6 +30,7 @@ require("lazy").setup({
 		opts = {
 			ensure_installed = {
 				"debugpy",
+				"clangd",
 			},
 		},
 	},
@@ -476,10 +482,6 @@ require("lazy").setup({
 		"folke/zen-mode.nvim",
 	},
 	{
-		"numToStr/Comment.nvim",
-		opts = {},
-	},
-	{
 		"folke/todo-comments.nvim",
 		event = "VimEnter",
 		dependencies = { "nvim-lua/plenary.nvim" },
@@ -622,5 +624,12 @@ require("lazy").setup({
 				end,
 			})
 		end,
+	},
+})
+local lspconfig = require("lspconfig")
+lspconfig.clangd.setup({
+	cmd = { "clangd", "--background-index", "--clang-tidy", "--log=verbose" },
+	init_options = {
+		fallbackFlags = { "-std=c++17" },
 	},
 })

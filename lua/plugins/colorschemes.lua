@@ -13,6 +13,8 @@ return {
 	"oxfist/night-owl.nvim",
 	"ribru17/bamboo.nvim",
 	"nyoom-engineering/oxocarbon.nvim",
+	"yorickpeterse/vim-paper",
+	"wtfox/jellybeans.nvim",
 	{
 		"zenbones-theme/zenbones.nvim",
 		dependencies = "rktjmp/lush.nvim",
@@ -24,5 +26,4 @@ return {
 		--     vim.cmd.colorscheme('zenbones')
 		-- end
 	},
-	"yorickpeterse/vim-paper",
 }
