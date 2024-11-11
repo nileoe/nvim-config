@@ -3,6 +3,7 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
 vim.keymap.set("n", "<leader>r", vim.diagnostic.open_float, { desc = "Show diagnostic e[R]ror messages" })
 vim.keymap.set("n", "<leader>rf", vim.diagnostic.setloclist, { desc = "Open diagnostic e[R]rors quick[F]ix list" })
+vim.keymap.set("n", "<leader>da", vim.lsp.buf.code_action)
 
 -- I like hls sue me
 vim.keymap.set({ "n", "v" }, "<leader>n", ":noh<CR>", { silent = true })
@@ -51,11 +52,12 @@ vim.keymap.set({ "n", "v", "x" }, "<leader>pk", ":sp<CR>")
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
 -- to investigate some time
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz") -- for going through errors
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz") -- for going through errors
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz") -- jumping to locations
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz") -- jumping to locations
---
+-- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz") -- for going through errors
+-- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz") -- for going through errors
+-- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz") -- jumping to locations
+-- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz") -- jumping to locations
+
+-- global word find and replace
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- Cursed
@@ -92,5 +94,4 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- vim.keymap.set('', 'T', function()
 --     hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
 -- end, { remap = true })
-
--- mon petit cheval de bois qui se fait la malle comme un petit salaud
+--
