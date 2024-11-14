@@ -1,4 +1,3 @@
--- TODO check those
 -- f-person/git-blame.nvim (see git blames)
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -589,6 +588,16 @@ require("lazy").setup({
 	--     },
 	-- },
 	-- look into https://github.com/Shatur/neovim-tasks
+	-- {
+	-- 	{ "mistricky/codesnap.nvim", build = "make" },
+	-- },
+	-- {
+	-- 	"ellisonleao/carbon-now.nvim",
+	-- 	lazy = true,
+	-- 	cmd = "CarbonNow",
+	-- 	---@param opts cn.ConfigSchema
+	-- 	opts = { [[ your custom config here ]] },
+	-- },
 })
 local lspconfig = require("lspconfig")
 lspconfig.clangd.setup({
