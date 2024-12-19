@@ -156,6 +156,9 @@ require("lazy").setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
 				nix = { "alejandra", "nixpkgs-fmt" },
+				cpp = { "clang-format" },
+				c = { "clang-format" },
+				cs = { "clang-format" },
 				javascript = { "prettierd", "prettier" },
 				typescript = { "prettierd", "prettier" },
 				javascriptreact = { "prettierd", "prettier" },
