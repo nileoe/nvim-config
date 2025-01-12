@@ -596,6 +596,17 @@ require("lazy").setup({
 		end,
 	},
 	{
+		"wurli/visimatch.nvim",
+		opts = {},
+	},
+	-- {
+	-- 	"sontungexpt/better-diagnostic-virtual-text",
+	-- 	"LspAttach",
+	-- 	config = function(_)
+	-- 		require("better-diagnostic-virtual-text").setup(opts)
+	-- 	end,
+	-- },
+	{
 		"folke/flash.nvim",
 		event = "VeryLazy",
 		---@type Flash.Config
