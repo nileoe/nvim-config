@@ -13,6 +13,9 @@ require("lazy").setup({
 	-- ####################################### LSPS / MASON #######################################
 	{
 		"neovim/nvim-lspconfig",
+		config = function()
+			require("lspconfig").clangd.setup({})
+		end,
 		-- opts = {
 		-- 	servers = {
 		-- 		clangd = {
@@ -640,17 +643,17 @@ require("lazy").setup({
 	-- 	opts = { [[ your custom config here ]] },
 	-- },
 })
-local lspconfig = require("lspconfig")
-lspconfig.clangd.setup({
-	-- 	cmd = { "clangd", "--background-index", "--clang-tidy", "--log=verbose" },
-	-- 	init_options = {
-	-- 		fallbackFlags = { "-std=c++17" },
-	-- 	},
-})
-lspconfig.opts = {
-	servers = {
-		clangd = {
-			mason = false,
-		},
-	},
-}
+-- local lspconfig = require("lspconfig")
+-- lspconfig.clangd.setup({
+-- 	-- 	cmd = { "clangd", "--background-index", "--clang-tidy", "--log=verbose" },
+-- 	-- 	init_options = {
+-- 	-- 		fallbackFlags = { "-std=c++17" },
+-- 	-- 	},
+-- })
+-- lspconfig.opts = {
+-- 	servers = {
+-- 		clangd = {
+-- 			mason = false,
+-- 		},
+-- 	},
+-- }
