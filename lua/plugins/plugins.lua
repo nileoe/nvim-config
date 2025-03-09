@@ -160,7 +160,7 @@ require("lazy").setup({
 				lua = { "stylua" },
 				nix = { "alejandra", "nixpkgs-fmt" },
 				cpp = { "clang-format" },
-				c = { "clang-format" },
+				-- c = { "clang-format" },
 				cs = { "clang-format" },
 				javascript = { "prettierd", "prettier" },
 				typescript = { "prettierd", "prettier" },
@@ -263,6 +263,7 @@ require("lazy").setup({
 					--  This will auto-import if your LSP supports it.
 					--  This will expand snippets if the LSP sent a snippet.
 					["<C-o>"] = cmp.mapping.confirm({ select = true }),
+					["<Tab>"] = cmp.mapping.confirm({ select = true }),
 
 					-- If you prefer more traditional completion keymaps,
 					-- you can uncomment the following lines
@@ -566,6 +567,31 @@ require("lazy").setup({
 	--     keys = 'etovxqpdygfblzhckisuran'
 	--   }
 	-- },
+{
+     "mistricky/codesnap.nvim",
+     build = "make",
+keys = {
+    { "<leader>cc", "<cmd>CodeSnapHighlight<cr>", mode = "x", desc = "Save selected code snapshot into clipboard" },
+    { "<leader>cs", "<cmd>CodeSnapSave<cr>", mode = "x", desc = "Save selected code snapshot in ~/Pictures" },
+  },
+     config = function()
+	   require("codesnap").setup({
+  -- The save_path must be ends with .png, unless when you specified a directory path,
+  -- CodeSnap will append an auto-generated filename to the specified directory path
+  -- For example:
+  -- save_path = "~/Pictures"
+  -- parsed: "~/Pictures/CodeSnap_y-m-d_at_h:m:s.png"
+  -- save_path = "~/Pictures/foo.png"
+  -- parsed: "~/Pictures/foo.png"
+  mac_window_bar = false,
+  code_font_family = "JetBrains Mono", 
+  has_line_number = true,
+  watermark = "",
+  bg_padding = 0,
+  save_path = "~/Pictures/foo.png"
+})
+end,
+},
 	{
 		"norcalli/nvim-colorizer.lua",
 		config = function()
