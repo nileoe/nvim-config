@@ -434,6 +434,7 @@ require("lazy").setup({
 			-- REQUIRED
 
 			vim.keymap.set({ "n", "v" }, "<leader>h", function()
+				print("Successfully added buffer to Harpoon list")
 				harpoon:list():add()
 			end, { desc = "Add buffer to [H]arpoon list" })
 			vim.keymap.set({ "n", "v" }, "<A-S-h>", function()
@@ -567,31 +568,36 @@ require("lazy").setup({
 	--     keys = 'etovxqpdygfblzhckisuran'
 	--   }
 	-- },
-{
-     "mistricky/codesnap.nvim",
-     build = "make",
-keys = {
-    { "<leader>cc", "<cmd>CodeSnapHighlight<cr>", mode = "x", desc = "Save selected code snapshot into clipboard" },
-    { "<leader>cs", "<cmd>CodeSnapSave<cr>", mode = "x", desc = "Save selected code snapshot in ~/Pictures" },
-  },
-     config = function()
-	   require("codesnap").setup({
-  -- The save_path must be ends with .png, unless when you specified a directory path,
-  -- CodeSnap will append an auto-generated filename to the specified directory path
-  -- For example:
-  -- save_path = "~/Pictures"
-  -- parsed: "~/Pictures/CodeSnap_y-m-d_at_h:m:s.png"
-  -- save_path = "~/Pictures/foo.png"
-  -- parsed: "~/Pictures/foo.png"
-  mac_window_bar = false,
-  code_font_family = "JetBrains Mono", 
-  has_line_number = true,
-  watermark = "",
-  bg_padding = 0,
-  save_path = "~/Pictures/foo.png"
-})
-end,
-},
+	{
+		"mistricky/codesnap.nvim",
+		build = "make",
+		keys = {
+			{
+				"<leader>cc",
+				"<cmd>CodeSnapHighlight<cr>",
+				mode = "x",
+				desc = "Save selected code snapshot into clipboard",
+			},
+			{ "<leader>cs", "<cmd>CodeSnapSave<cr>", mode = "x", desc = "Save selected code snapshot in ~/Pictures" },
+		},
+		config = function()
+			require("codesnap").setup({
+				-- The save_path must be ends with .png, unless when you specified a directory path,
+				-- CodeSnap will append an auto-generated filename to the specified directory path
+				-- For example:
+				-- save_path = "~/Pictures"
+				-- parsed: "~/Pictures/CodeSnap_y-m-d_at_h:m:s.png"
+				-- save_path = "~/Pictures/foo.png"
+				-- parsed: "~/Pictures/foo.png"
+				mac_window_bar = false,
+				code_font_family = "JetBrains Mono",
+				has_line_number = true,
+				watermark = "",
+				bg_padding = 0,
+				save_path = "~/Pictures/foo.png",
+			})
+		end,
+	},
 	{
 		"norcalli/nvim-colorizer.lua",
 		config = function()
