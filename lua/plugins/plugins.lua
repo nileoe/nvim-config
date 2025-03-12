@@ -655,6 +655,23 @@ require("lazy").setup({
 	        -- { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
 	    },
 	},
+	{
+		"nvimdev/lspsaga.nvim",
+		config = function()
+			require("lspsaga").setup({
+				lightbulb = {
+					enable = false,
+				},
+			})
+		end,
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter", -- optional
+			"nvim-tree/nvim-web-devicons", -- optional
+		},
+		keys = {
+			{ "<leader>fd", "<cmd>Lspsaga hover_doc<CR>", desc = "Hover doc" },
+		},
+	},
 	-- { -- REQUIRES v >= 0.10
 	--     "m4xshen/hardtime.nvim",
 	--     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
