@@ -48,3 +48,5 @@ vim.opt.cursorline = true
 vim.g.neovide_position_animation_length = 0
 vim.g.neovide_touch_drag_timeout = 0
 
+vim.opt.scroll = 10
+

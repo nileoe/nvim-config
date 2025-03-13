@@ -5,3 +5,6 @@ require("keymaps")
 -- vim.cmd.colorscheme("tokyobones")
 -- vim.cmd.colorscheme("catppuccin-mocha")
 vim.cmd.colorscheme("rose-pine-main")
+
+require("lspsaga.symbol.winbar").get_bar()
+
