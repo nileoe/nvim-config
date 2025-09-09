@@ -1,5 +1,6 @@
 return {
 	"navarasu/onedark.nvim",
+	"nickkadutskyi/jb.nvim",
 	"sainnhe/edge",
 	"catppuccin/nvim",
 	"rebelot/kanagawa.nvim",
@@ -14,7 +15,6 @@ return {
 	"ribru17/bamboo.nvim",
 	"nyoom-engineering/oxocarbon.nvim",
 	"yorickpeterse/vim-paper",
-	"wtfox/jellybeans.nvim",
 	{
 		"zenbones-theme/zenbones.nvim",
 		dependencies = "rktjmp/lush.nvim",
@@ -22,8 +22,8 @@ return {
 		priority = 1000,
 		-- you can set set configuration options here
 		-- config = function()
-		--     vim.g.zenbones_darken_comments = 45
-		--     vim.cmd.colorscheme('zenbones')
+		-- vim.g.zenbones_darken_comments = 45
+		-- vim.cmd.colorscheme('zenbones')
 		-- end
 	},
 	{
@@ -36,11 +36,10 @@ return {
 				-- use the night style
 				style = "night",
 				-- disable italic for functions
-				styles = {
-					functions = {},
-				},
+				styles = { functions = {} },
 				sidebars = { "qf", "vista_kind", "terminal", "packer" },
-				-- Change the "hint" color to the "orange" color, and make the "error" color bright red
+				-- Change the "hint" color to the "orange" color, and make the "error"
+				-- color bright red
 				on_colors = function(colors)
 					-- colors.hint = colors.orange
 					-- colors.error = "#00ff00"
@@ -50,13 +49,14 @@ return {
 					-- colors.terminal_black = "#ff9e64" -- #414868
 				end,
 				on_highlights = function(highlights)
-					highlights.MiniStatuslineFilename = {
+					highlights.ministatuslinefilename = {
 						bg = "#3b4261", -- defaults: so that the gutter doesn't affect this
 						fg = "#ffffff", -- "#a9b1d6"
 					}
-					-- make unused imports and similar (unnessary) readable (default is too dark)
+					-- make unused imports and similar (unnessary) readable (default is
+					-- too dark)
 					-- highlights.DiagnosticUnnecessary = {
-					--   fg = "#ffff00",
+					-- fg = "#ffff00",
 					-- }
 				end,
 			})

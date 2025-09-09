@@ -1,4 +1,3 @@
-vim.keymap.set("n", "<leader>cc", ":!c++ *.cpp && ./a.out<CR>")
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
@@ -6,15 +5,11 @@ vim.keymap.set("n", "<leader>r", vim.diagnostic.open_float, { desc = "Show diagn
 vim.keymap.set("n", "<leader>rf", vim.diagnostic.setloclist, { desc = "Open diagnostic e[R]rors quick[F]ix list" })
 vim.keymap.set("n", "<leader>da", vim.lsp.buf.code_action)
 
--- I like hls sue me
+-- I like hls, sue me
 vim.keymap.set({ "n", "v" }, "<leader>n", ":noh<CR>", { silent = true })
 
--- Explore (show project tree)
+-- Explore (show project tree when in VSC FOMO)
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "[E]xplore : Toggle NvimTree" })
-
--- Line separators
--- vim.keymap.set("n", "<leader>sep", "o------------------------------------  <C-c>hhyiw$pbhi",
---     { desc = "line [SEP]arator" })
 
 -- Terminal
 vim.keymap.set("t", "<C-e>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
@@ -25,10 +20,6 @@ vim.keymap.set("n", "<leader>th", function()
 	vim.cmd("terminal")
 	vim.api.nvim_win_set_width(0, 75) -- terminal window width
 end, { desc = "Open terminal window in new left pane" })
-
--- #################################### Navigation ####################################
--- resize
--- vim.keymap.set("n", "<leader>rh", "<cmd> resize 10<CR>")
 
 vim.keymap.set("n", "J", "myJ`y", { silent = true }) -- don't move cursor when calling J
 
@@ -41,18 +32,13 @@ vim.keymap.set({ "n", "v", "x" }, "<leader>ph", ":vsp<CR>")
 vim.keymap.set({ "n", "v", "x" }, "<leader>pj", ":sp<CR>")
 vim.keymap.set({ "n", "v", "x" }, "<leader>pk", ":sp<CR>")
 
--- <C-d> and <C-u> center the screen verically
--- vim.keymap.set("n", "<C-d>", "<C-d>zz")
--- vim.keymap.set("n", "<C-u>", "<C-u>zz")
-
--- search terms stay in the middle verically
--- vim.keymap.set("n", "n", "nzzzv")
--- vim.keymap.set("n", "N", "Nzzzv")
-
--- so that in visual block mode <C-c> = escape ffs
+-- so that in visual block mode <C-c> = escape normally, ffs
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
--- to investigate some time
+-- c++ hack
+vim.keymap.set("n", "<leader>cc", ":!c++ *.cpp && ./a.out<CR>")
+
+-- TODO: error navigation
 -- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz") -- for going through errors
 -- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz") -- for going through errors
 -- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz") -- jumping to locations
@@ -60,10 +46,6 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 
 -- global word find and replace
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-
--- Cursed
--- vim.keymap.set({ "n", "v" }, "h", "<nop>")
--- vim.keymap.set({ "n", "v" }, "l", "<nop>")
 
 -- Miscellaneous
 vim.keymap.set("n", "<leader>z", ":ZenMode<CR>", { desc = "Toggle [Z]enMode" })
@@ -78,21 +60,3 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank()
 	end,
 })
-
--- Hop
--- place this in one of your configuration file(s)
--- local hop = require('hop')
--- local directions = require('hop.hint').HintDirection
--- vim.keymap.set('', 'f', function()
---     hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
--- end, { remap = true })
--- vim.keymap.set('', 'F', function()
---     hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
--- end, { remap = true })
--- vim.keymap.set('', 't', function()
---     hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
--- end, { remap = true })
--- vim.keymap.set('', 'T', function()
---     hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
--- end, { remap = true })
---

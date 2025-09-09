@@ -1,5 +1,3 @@
--- f-person/git-blame.nvim (see git blames)
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -16,13 +14,6 @@ require("lazy").setup({
 		config = function()
 			require("lspconfig").clangd.setup({})
 		end,
-		-- opts = {
-		-- 	servers = {
-		-- 		clangd = {
-		-- 			mason = false,
-		-- 		},
-		-- 	},
-		-- },
 	},
 	{
 		"williamboman/mason.nvim",
@@ -36,27 +27,11 @@ require("lazy").setup({
 			},
 		},
 	},
-	{
-		-- mason lsp server names don't always match with nvim-lspconfig.
-		-- This plugin (mason-lspconfig.nvim) bridges the two.
-		"williamboman/mason-lspconfig.nvim",
-		dependencies = { "mason.nvim" },
-		config = function()
-			require("mason-lspconfig").setup()
-			-- the function below (setup_handlers) essentially takes care of installing to the mason-installed LSPs.
-			-- to actually understand it: help on :h mason-lspconfig-automatic-server-setup
-			require("mason-lspconfig").setup_handlers({
-				function(server_name)
-					require("lspconfig")[server_name].setup({})
-				end,
-			})
-		end,
-	},
 	-- TREESITTER
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
 	},
-	{ -- ALL OF THIS IS TREESITTER DO NOT PANIC
+	{
 		-- treesitter allows for multiple modules (i.e. plugins) in treesitter.configs.
 		"nvim-treesitter/nvim-treesitter",
 		config = function()
@@ -127,7 +102,7 @@ require("lazy").setup({
 						include_surrounding_whitespace = true,
 					},
 				},
-			}) -- END OF TREESITTER STUFF ffs
+			})
 		end,
 	},
 	{ -- Autoformat
@@ -176,19 +151,6 @@ require("lazy").setup({
 				bash = { "buf" },
 				rust = { "rustfmt" },
 				toml = { "taplo" },
-				-- javascript = { { "prettierd", "prettier" } },
-				-- typescript = { { "prettierd", "prettier" } },
-				-- javascriptreact = { { "prettierd", "prettier" } },
-				-- typescriptreact = { { "prettierd", "prettier" } },
-				-- lua = { "stylua" },
-				-- css = { { "prettierd", "prettier" } },
-				-- scss = { { "prettierd", "prettier" } },
-				-- json = { { "prettierd", "prettier" } },
-				-- java = { "google-java-format" },
-				-- html = { "htmlbeautifier" },
-				-- bash = { "buf" },
-				-- rust = { "rustfmt" },
-				-- toml = { "taplo" },
 			},
 		},
 	},
@@ -261,7 +223,7 @@ require("lazy").setup({
 
 					-- Accept the completion OK
 					--  This will auto-import if your LSP supports it.
-					--  This will expand snippets if the LSP sent a snippet.
+					--  This will expand snippets if LSP sent a snippet.
 					["<C-o>"] = cmp.mapping.confirm({ select = true }),
 					["<Tab>"] = cmp.mapping.confirm({ select = true }),
 
@@ -328,11 +290,7 @@ require("lazy").setup({
 			vim.o.timeout = true
 			vim.o.timeoutlen = 300
 		end,
-		opts = {
-			-- your configuration comes here
-			-- or leave it empty to use the default settings
-			-- refer to the configuration on github
-		},
+		opts = {},
 	},
 	{
 		"ibhagwan/fzf-lua",
@@ -340,7 +298,6 @@ require("lazy").setup({
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			-- calling `setup` is optional (customization)
-			-- vim.keymap.set({ "n", "v" }, "<leader>g", ":FzfLua files<CR>", { desc = "[G]o to file" })
 			vim.keymap.set({ "n", "v" }, "<C-p>", ":FzfLua files<CR>", { desc = "[G]o to file" })
 			vim.keymap.set({ "n", "v" }, "<leader>fc", ":FzfLua colorschemes<CR>", { desc = "[F]zf [C]olorschemes" })
 			vim.keymap.set({ "n", "v" }, "<leader>fg", ":FzfLua live_grep<CR>", { desc = "[F]zf [G]rep" })
@@ -386,24 +343,6 @@ require("lazy").setup({
 	{
 		"Eandrju/cellular-automaton.nvim",
 	},
-	-- {
-	--   "christoomey/vim-tmux-navigator",
-	--   cmd = {
-	--     "TmuxNavigateLeft",
-	--     "TmuxNavigateDown",
-	--     "TmuxNavigateUp",
-	--     "TmuxNavigateRight",
-	--     "TmuxNavigatePrevious",
-	--   },
-	--   keys = {
-	--     { "<c-h>",  "<cmd><C-U>TmuxNavigateLeft<cr>" },
-	--     { "<c-j>",  "<cmd><C-U>TmuxNavigateDown<cr>" },
-	--     { "<c-k>",  "<cmd><C-U>TmuxNavigateUp<cr>" },
-	--     { "<c-l>",  "<cmd><C-U>TmuxNavigateRight<cr>" },
-	--     { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
-	--   },
-	-- },
-
 	{
 		"https://git.sr.ht/~swaits/zellij-nav.nvim",
 		lazy = true,
@@ -461,7 +400,6 @@ require("lazy").setup({
 			vim.keymap.set("n", "<A-S-n>", function()
 				harpoon:list():next()
 			end)
-			-- END OF ##### was in harpoon file
 
 			-- basic telescope configuration
 			local conf = require("telescope.config").values
@@ -482,8 +420,6 @@ require("lazy").setup({
 					})
 					:find()
 			end
-
-			-- vim.keymap.set("n", "<C-e>", function() toggle_telescope(harpoon:list()) end, { desc = "Open harpoon window" })
 		end,
 	},
 	{
@@ -497,7 +433,6 @@ require("lazy").setup({
 	},
 	{
 		"Wansmer/treesj",
-		-- keys = { '<leader>rt', '<leader>rj', '<leader>rs' },
 		dependencies = { "nvim-treesitter/nvim-treesitter" }, -- if you install parsers with `nvim-treesitter`
 		config = function()
 			require("treesj").setup({--[[ your config ]]
@@ -531,22 +466,7 @@ require("lazy").setup({
 				--   }
 			)
 
-			-- set use_icons to true if you have a Nerd Font
-			-- local statusline = require 'mini.statusline'
-			-- statusline.setup { use_icons = vim.g.have_nerd_font }
-			--
-			-- -- You can configure sections in the statusline by overriding their
-			-- -- default behavior. For example, here we set the section for
-			-- -- cursor location to LINE:COLUMN
-			-- ---@diagnostic disable-next-line: duplicate-set-field
-			-- statusline.section_location = function()
-			--   return '%2l:%-2v'
-			-- end
-			-- require("mini.statusline").setup()
 			require("mini.pairs").setup()
-			-- require("mini.jump2d").setup()
-			-- require("mini.files").setup()
-			-- require("mini.jump").setup()
 		end,
 	},
 	{
@@ -582,13 +502,6 @@ require("lazy").setup({
 		},
 		config = function()
 			require("codesnap").setup({
-				-- The save_path must be ends with .png, unless when you specified a directory path,
-				-- CodeSnap will append an auto-generated filename to the specified directory path
-				-- For example:
-				-- save_path = "~/Pictures"
-				-- parsed: "~/Pictures/CodeSnap_y-m-d_at_h:m:s.png"
-				-- save_path = "~/Pictures/foo.png"
-				-- parsed: "~/Pictures/foo.png"
 				mac_window_bar = false,
 				code_font_family = "JetBrains Mono",
 				has_line_number = true,
@@ -634,13 +547,6 @@ require("lazy").setup({
 		"wurli/visimatch.nvim",
 		opts = {},
 	},
-	-- {
-	-- 	"sontungexpt/better-diagnostic-virtual-text",
-	-- 	"LspAttach",
-	-- 	config = function(_)
-	-- 		require("better-diagnostic-virtual-text").setup(opts)
-	-- 	end,
-	-- },
 	{
 		"folke/flash.nvim",
 		event = "VeryLazy",
@@ -650,9 +556,6 @@ require("lazy").setup({
 	    keys = {
 	        { "<leader>/", mode = { "n", "x", "o" }, function() require("flash").jump() end,       desc = "Flash" },
 	        { "<leader>v", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-	        -- { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-	        -- { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-	        -- { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
 	    },
 	},
 	{
@@ -672,37 +575,4 @@ require("lazy").setup({
 			{ "<leader>fd", "<cmd>Lspsaga hover_doc<CR>", desc = "Hover doc" },
 		},
 	},
-	-- { -- REQUIRES v >= 0.10
-	--     "m4xshen/hardtime.nvim",
-	--     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-	--     opts = {
-	--         disable_mouse = false,
-	--         max_count = 15,
-	--     },
-	-- },
-	-- look into https://github.com/Shatur/neovim-tasks
-	-- {
-	-- 	{ "mistricky/codesnap.nvim", build = "make" },
-	-- },
-	-- {
-	-- 	"ellisonleao/carbon-now.nvim",
-	-- 	lazy = true,
-	-- 	cmd = "CarbonNow",
-	-- 	---@param opts cn.ConfigSchema
-	-- 	opts = { [[ your custom config here ]] },
-	-- },
 })
--- local lspconfig = require("lspconfig")
--- lspconfig.clangd.setup({
--- 	-- 	cmd = { "clangd", "--background-index", "--clang-tidy", "--log=verbose" },
--- 	-- 	init_options = {
--- 	-- 		fallbackFlags = { "-std=c++17" },
--- 	-- 	},
--- })
--- lspconfig.opts = {
--- 	servers = {
--- 		clangd = {
--- 			mason = false,
--- 		},
--- 	},
--- }
