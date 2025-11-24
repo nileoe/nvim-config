@@ -9,12 +9,12 @@ require("lazy").setup({
 	require("plugins/git"),
 	-- require("plugins/debugging"),
 	-- ####################################### LSPS / MASON #######################################
-	{
-		"neovim/nvim-lspconfig",
-		config = function()
-			require("lspconfig").clangd.setup({})
-		end,
-	},
+	-- {
+	-- 	"neovim/nvim-lspconfig",
+	-- 	config = function()
+	-- 		require("lspconfig").clangd.setup({})
+	-- 	end,
+	-- },
 	{
 		"williamboman/mason.nvim",
 		config = function()
